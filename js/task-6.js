@@ -5,7 +5,6 @@ function getRandomHexColor() {
 }
 
 
-  
     const input = document.querySelector('#controls input');
     const createBtn = document.querySelector('button[data-create]');
     const destroyBtn = document.querySelector('button[data-destroy]');
@@ -20,7 +19,8 @@ function getRandomHexColor() {
         return;
       }
       
-      boxesContainer.innerHTML = '';
+     const fragment = document.createDocumentFragment();
+
 
       let size = 30;
       for (let i = 0; i < amount; i++) {
@@ -29,14 +29,21 @@ function getRandomHexColor() {
         box.style.width = `${size}px`;
         box.style.height = `${size}px`;
         box.style.backgroundColor = getRandomHexColor();
-        boxesContainer.appendChild(box);
+       fragment.appendChild(box);
         size += 10;
       }
 
+      boxesContainer.innerHTML = '';
+      boxesContainer.appendChild(fragment);
+      
       input.value = '';
     }
 
     function destroyBoxes() {
       boxesContainer.innerHTML = '';
     }
+ 
+
+
+
  
